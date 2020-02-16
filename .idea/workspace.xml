@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76d86612-1b96-4714-965e-6bf8385f7fa3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/ncov-front/src/data/area.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ncov-front/src/data/china.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ncov-front/src/data/config_line.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ncov-front/src/data/config_map.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ncov-front/src/data/map.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ncov-front/src/data/zhen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ncov-front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ncov-front/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ncov-front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ncov-front/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ncov-front/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ncov-front/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ncov-front/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/ncov-front/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ncov-front/static/data/sars.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,24 +17,26 @@
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
+  <component name="ProjectId" id="1XtNENptZF6SRTJGPlK1bXu9zeL" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ncov-front/src/data" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ncov-server/src/main/java/com/example/springboot" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/ncov-front/src" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ncov-server/src/main/java/com/example/springboot" />
       <recent name="$PROJECT_DIR$/ncov-front/src/data" />
       <recent name="$PROJECT_DIR$/ncov-front/src" />
       <recent name="$PROJECT_DIR$/ncov-front/src/components" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ncov-front/src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -96,6 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1581566919575</updated>
       <workItem from="1581566921037" duration="3215000" />
+      <workItem from="1581861319375" duration="121000" />
     </task>
     <servers />
   </component>
@@ -107,7 +98,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
