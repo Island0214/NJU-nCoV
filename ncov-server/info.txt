@@ -1,0 +1,54 @@
+Page Info:
+	>Date: 2003/3/17
+	>URL: https://www.who.int/csr/sars/country/table/en/
+	>Info: Cumulative number of reported suspect and probable cases (SARS)
+Country Total number of case(s) Number of deaths Local transmission
+Germany 1 0 None*
+Canada 8 2 Yes
+Singapore 20 0 Yes
+Hong Kong Special Administrative Region of China 95 1** Yes
+Switzerland 2 0 To be determined
+Thailand 1 0 None*
+Viet Nam 40 1 Yes
+Total 167 4
+-------------------------------
+Page Info:
+	>Date: 2003/3/18
+	>URL: https://www.who.int/csr/sars/country/tablemarch18/en/
+	>Info: Cumulative number of reported suspect and probable cases (SARS)
+Country Cumulative number of case(s) Â§ Number of deaths Local transmission
+Germany 2 0 None*
+Canada 8 2 Yes
+China +
+Singapore 23 0 Yes
+Hong Kong Special Administrative Region of China 123 1** Yes
+Taiwan, China 3 0 Yes
+Thailand 1 0 None*
+Viet Nam 57 1 Yes
+Slovenia 1 0 None*
+United Kingdom 1 0 None*
+Total 219 4
+-------------------------------
+Page Info:
+	>Date: 2003/3/19
+	>URL: https://www.who.int/csr/sars/country/2003_19_03/en/
+	>Info: Cumulative number of reported suspect and probable cases (SARS)
+Country Cumulative number of case(s) Â§ Number of deaths Local transmission
+Canada 8 2 Yes
+China+
+Germany 1 0 None*
+Hong Kong Special Administrative Region of China 150 5** Yes
+Singapore 31 0 Yes
+Slovenia 1 0 None*
+Spain 1 0 To be determined
+Taiwan, China 3 0 Yes
+Thailand 1 0 None*
+United Kingdom 1 0 None*
+United States 11 0 To be determined
+Viet Nam 56 2 Yes
+Total 264 9
+-------------------------------
+Page Info:
+	>Date: 2003/3/20
+	>URL: https://www.who.int/csr/sars/country/2003_03_20/en/
+	>Info: Cumulative number of reported suspect and probable cases (SARS)
