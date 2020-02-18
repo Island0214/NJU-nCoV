@@ -47,17 +47,25 @@ public class DataCrawler {
         FileOutputStream fos = new FileOutputStream(file);
         for(SARSSingle page: pages){
             fos.write(page.toString().getBytes());
-
+            fos.write("-------------------------------\n".getBytes());
             raw = getRawHTML.getRawHTML(page.getURL());
             // 4.1 将文档解析为Document
             doc = Jsoup.parse(raw);
             // 4.2 获取数据
             elements = doc.select("tr");
             for(Element element: elements){
-                fos.write((element.text()+"\n").getBytes());
+                Elements tds = element.select("td");
+                for(Element td: tds){
+                    String value = td.text();
+                    value = value.replaceAll("[^a-zA-Z0-9\\u0020]","");
+                    value = value.trim();
+                    fos.write((value+" , ").getBytes());
+                }
+                fos.write(("\n").getBytes());
+                //fos.write((element.text()+"\n").getBytes());
                 //System.out.println(element.text());
             }
-            fos.write("-------------------------------\n".getBytes());
+            fos.write("======================================================================\n".getBytes());
         }
         fos.close();
     }

@@ -74,3 +74,4 @@ ncov-server/target/classes/com/example/springboot/pojo/SingleData.class
 ncov-server/target/classes/static/sars.json
 ncov-server/target/test-classes/com/example/springboot/HelloControllerIT.class
 ncov-server/target/test-classes/com/example/springboot/HelloControllerTest.class
+*.class
