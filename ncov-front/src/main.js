@@ -6,6 +6,12 @@ import './plugins/element.js'
 
 Vue.config.productionTip = false
 
+
+var axios = require('axios')
+axios.defaults.baseURL = 'http://localhost:8443/api'
+
+Vue.prototype.$axios = axios
+
 new Vue({
   router,
   store,
