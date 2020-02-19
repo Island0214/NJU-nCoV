@@ -31,4 +31,9 @@
     button {
         line-height: 60px;
     }
+
+    p {
+        height: 60px;
+        line-height: 60px;
+    }
 </style>

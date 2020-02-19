@@ -5,7 +5,9 @@ import store from './store'
 import './plugins/element.js'
 import './index.less'
 import './element-variables.scss'
+import echarts from 'echarts'
 
+Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 
 
