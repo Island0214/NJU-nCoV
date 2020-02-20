@@ -38,9 +38,8 @@
                 </el-row>
             </div>
         </div>
-        <div class="divider-wrapper">
+        <div class="divider-wrapper" style="margin-top: -9vh">
             <el-divider></el-divider>
-
         </div>
         <div class="tables-wrapper">
             <el-row>
@@ -59,20 +58,24 @@
                 </el-col>
             </el-row>
         </div>
+        <!--<el-divider></el-divider>-->
+        <Footer></Footer>
     </div>
 </template>
 
 <script>
     import echarts from "echarts";
     import '../../node_modules/echarts/map/js/china.js'
-    import LineChart from '../components/LineChart.vue'
-    import StackAreaChart from '../components/StackAreaChart.vue'
+    import LineChart from '../components/charts/LineChart.vue'
+    import StackAreaChart from '../components/charts/StackAreaChart.vue'
+    import Footer from '../components/Footer.vue'
 
     export default {
         name: "Epidemic",
         components: {
             LineChart,
-            StackAreaChart
+            StackAreaChart,
+            Footer
         },
         data() {
             return {
@@ -300,7 +303,7 @@
     }
 
     .divider-wrapper {
-        margin: -9vh 30px 0 30px;
+        margin: 0 30px;
     }
 
     .select-wrapper {
