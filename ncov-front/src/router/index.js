@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import News from "../components/news/News";
+import Epidemic from '../views/Epidemic.vue'
+
 import RequestSarsData from "../components/RequestSarsData";
 
 Vue.use(VueRouter)
@@ -29,7 +31,22 @@ const routes = [
     path: '/news',
     name: 'News',
     component: News
-  }
+  },
+    {
+        path: '/',
+        name: 'Home',
+        component: Home
+    },
+    {
+        path: '/requestSarsData',
+        name: 'RequestSarsData',
+        component: RequestSarsData
+    },
+    {
+        path: '/epidemic',
+        name: 'Epidemic',
+        component: Epidemic
+    }
 ]
 
 const router = new VueRouter({

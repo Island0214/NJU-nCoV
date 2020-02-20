@@ -4,7 +4,7 @@
         <el-row>
             <el-col :span="12" class="content-wrapper">
                 <div class="title-wrapper">
-                    <h1>COVID - 19<br><span class="light">2019新型冠状病毒</span><br>----</h1>
+                    <h1>COVID - 19<br><span class="light">2019新型冠状病毒</span><br>————</h1>
                     <h2>Novel<br>Coronavirus<br>Pneumonia</h2>
                 </div>
                 <div class="info-wrapper">
@@ -23,7 +23,7 @@
                 <div class="overview-wrapper">
                     <h2>Epidemic Overview</h2>
                     <p>数据截止2020-02-19 18:58</p>
-                    <h1>----</h1>
+                    <h1>——</h1>
                     <h4>累计确诊人数</h4>
                     <h2>74282</h2>
                     <h4>昨日新增确诊</h4>
@@ -94,30 +94,6 @@
         position: absolute;
         bottom: 0;
         right: 0;
-    }
-
-    h1 {
-        margin: 0;
-        letter-spacing: -2px;
-    }
-
-    .light {
-        font-weight: 400;
-    }
-
-    h2 {
-        margin: 0;
-        font-weight: 600;
-    }
-
-    h4 {
-        margin: 0;
-        color: #aeaeae;
-    }
-
-    p {
-        margin: 0;
-        color: #cfcfcf;
     }
 
     button {
