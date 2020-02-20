@@ -27,6 +27,8 @@
 <style scoped>
     .navigation-wrapper {
         height: 60px;
+        position: relative;
+        z-index: 2;
     }
 
     button {

@@ -11,15 +11,20 @@
                             <h1>——</h1>
 
                             <h4>累计确诊人数</h4>
-                            <h2>{{statistic.totalDiagnosis}}<span> 较昨日<strong>{{statistic.totalDiagnosisIncrement > 0 ? '+' + statistic.totalDiagnosisIncrement: statistic.totalDiagnosisIncrement}}</strong></span></h2>
+                            <h2>{{statistic.totalDiagnosis}}<span> 较昨日<strong>{{statistic.totalDiagnosisIncrement > 0 ? '+' + statistic.totalDiagnosisIncrement: statistic.totalDiagnosisIncrement}}</strong></span>
+                            </h2>
                             <h4>现存确诊人数</h4>
-                            <h2>{{statistic.currentDiagnosis}}<span> 较昨日<strong>{{statistic.currentDiagnosisIncrement > 0 ? '+' + statistic.currentDiagnosisIncrement: statistic.currentDiagnosisIncrement}}</strong></span></h2>
+                            <h2>{{statistic.currentDiagnosis}}<span> 较昨日<strong>{{statistic.currentDiagnosisIncrement > 0 ? '+' + statistic.currentDiagnosisIncrement: statistic.currentDiagnosisIncrement}}</strong></span>
+                            </h2>
                             <h4>现存疑似人数</h4>
-                            <h2>{{statistic.currentSuspect}}<span> 较昨日<strong>{{statistic.currentSuspectIncrement > 0 ? '+' + statistic.currentSuspectIncrement: statistic.currentSuspectIncrement}}</strong></span></h2>
+                            <h2>{{statistic.currentSuspect}}<span> 较昨日<strong>{{statistic.currentSuspectIncrement > 0 ? '+' + statistic.currentSuspectIncrement: statistic.currentSuspectIncrement}}</strong></span>
+                            </h2>
                             <h4>累计死亡人数</h4>
-                            <h2>{{statistic.totalDeath}}<span> 较昨日<strong>{{statistic.totalDeathIncrement > 0 ? '+' + statistic.totalDeathIncrement: statistic.totalDeathIncrement}}</strong></span></h2>
+                            <h2>{{statistic.totalDeath}}<span> 较昨日<strong>{{statistic.totalDeathIncrement > 0 ? '+' + statistic.totalDeathIncrement: statistic.totalDeathIncrement}}</strong></span>
+                            </h2>
                             <h4>累计治愈人数</h4>
-                            <h2>{{statistic.totalHealing}}<span> 较昨日<strong>{{statistic.totalHealingIncrement > 0 ? '+' + statistic.totalHealingIncrement: statistic.totalHealingIncrement}}</strong></span></h2>
+                            <h2>{{statistic.totalHealing}}<span> 较昨日<strong>{{statistic.totalHealingIncrement > 0 ? '+' + statistic.totalHealingIncrement: statistic.totalHealingIncrement}}</strong></span>
+                            </h2>
                         </div>
                     </el-col>
                     <el-col :span="12">
@@ -33,15 +38,42 @@
                 </el-row>
             </div>
         </div>
+        <div class="divider-wrapper">
+            <el-divider></el-divider>
+
+        </div>
+        <div class="tables-wrapper">
+            <el-row>
+                <el-col :span="6">
+                    <div class="select-wrapper">
+                        <h1>疫情发展推移<br>——</h1>
+                        <el-radio v-model="chartType" label="new">全国新增确诊/疑似人数</el-radio>
+                        <el-radio v-model="chartType" label="current">全国现存确诊/疑似人数</el-radio>
+                        <el-radio v-model="chartType" label="finish">全国死亡/治愈人数</el-radio>
+                        <el-radio v-model="chartType" label="total">全国疫情累计趋势图</el-radio>
+                    </div>
+                </el-col>
+                <el-col :span="18">
+                    <StackAreaChart :data="chartData" v-if="chartType === 'total'"></StackAreaChart>
+                    <LineChart :data="chartData" v-else></LineChart>
+                </el-col>
+            </el-row>
+        </div>
     </div>
 </template>
 
 <script>
     import echarts from "echarts";
     import '../../node_modules/echarts/map/js/china.js'
+    import LineChart from '../components/LineChart.vue'
+    import StackAreaChart from '../components/StackAreaChart.vue'
 
     export default {
         name: "Epidemic",
+        components: {
+            LineChart,
+            StackAreaChart
+        },
         data() {
             return {
                 statistic: {
@@ -63,6 +95,76 @@
                 country: {
                     name: '全国',
                     value: 74282
+                },
+                chartData: {
+                    xAxis: ['2020-02-13', '2020-02-14', '2020-02-15', '2020-02-16', '2020-02-17', '2020-02-18', '2020-02-19'],
+                    series: [{
+                        name: '新增确证人数',
+                        data: [820, 932, 901, 934, 1290, 1330, 1320]
+                    }, {
+                        name: '新增疑似人数',
+                        data: [100, 1213, 122, 342, 1236, 41, 123]
+                    }]
+                },
+                chartType: 'new'
+            }
+        },
+        watch: {
+            chartType: function (type) {
+                switch (type) {
+                    case 'new':
+                        this.chartData = {
+                            xAxis: ['2020-02-13', '2020-02-14', '2020-02-15', '2020-02-16', '2020-02-17', '2020-02-18', '2020-02-19'],
+                            series: [{
+                                name: '新增确诊人数',
+                                data: [820, 932, 901, 934, 1290, 1330, 1320]
+                            }, {
+                                name: '新增疑似人数',
+                                data: [100, 1213, 122, 342, 1236, 41, 123]
+                            }]
+                        };
+                        break;
+                    case 'current':
+                        this.chartData = {
+                            xAxis: ['2020-02-13', '2020-02-14', '2020-02-15', '2020-02-16', '2020-02-17', '2020-02-18', '2020-02-19'],
+                            series: [{
+                                name: '现存确诊人数',
+                                data: [820, 932, 901, 934, 1290, 1330, 1320]
+                            }, {
+                                name: '现存疑似人数',
+                                data: [100, 1213, 122, 342, 1236, 41, 123]
+                            }]
+                        };
+                        break;
+                    case 'finish':
+                        this.chartData = {
+                            xAxis: ['2020-02-13', '2020-02-14', '2020-02-15', '2020-02-16', '2020-02-17', '2020-02-18', '2020-02-19'],
+                            series: [{
+                                name: '死亡人数',
+                                data: [820, 932, 901, 934, 1290, 1330, 1320]
+                            }, {
+                                name: '治愈人数',
+                                data: [100, 1213, 122, 342, 1236, 41, 123]
+                            }]
+                        };
+                        break;
+                    case 'total':
+                        this.chartData = {
+                            xAxis: ['2020-02-13', '2020-02-14', '2020-02-15', '2020-02-16', '2020-02-17', '2020-02-18', '2020-02-19'],
+                            series: [{
+                                name: '死亡人数',
+                                data: [100, 1213, 122, 342, 1236, 41, 123]
+                            }, {
+                                name: '治愈人数',
+                                data: [100, 1213, 122, 342, 1236, 41, 123]
+                            }, {
+                                name: '确诊人数',
+                                data: [820, 932, 901, 934, 1290, 1330, 1320]
+                            }]
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
         },
@@ -100,7 +202,7 @@
                         itemStyle: {
                             normal: {
                                 color: '#303843',
-                                borderColor: '#333333'
+                                borderColor: '#303843'
                             },
                             emphasis: {
                                 areaColor: null,
@@ -108,7 +210,7 @@
                                 shadowOffsetY: 0,
                                 shadowBlur: 0,
                                 borderWidth: 0,
-                                color: '#607789',
+                                color: '#afcaed',
                                 shadowColor: 'rgba(0, 0, 0, 0.5)'
                             }
                         }
@@ -166,6 +268,12 @@
 </script>
 
 <style scoped>
+    .epidemic {
+        z-index: 1;
+        position: relative;
+        margin-top: -8vh;
+    }
+
     .map-wrapper {
         height: 100vh;
         width: 100%;
@@ -174,21 +282,33 @@
     .content-wrapper {
         position: absolute;
         top: 0;
-        left: 30px;
-        right: 30px;
+        left: 0;
+        right: 0;
     }
 
     .data-wrapper {
         text-align: left;
         position: absolute;
-        top: 15vh;
+        top: 17vh;
     }
 
     .area-wrapper {
         text-align: right;
         position: absolute;
-        top: 80vh;
+        top: 72vh;
         right: 0;
+    }
+
+    .divider-wrapper {
+        margin: -9vh 30px 0 30px;
+    }
+
+    .select-wrapper {
+        padding-left: 80px;
+    }
+
+    .tables-wrapper {
+        text-align: left;
     }
 
     h2 {
