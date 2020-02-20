@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Info from '../views/Info.vue'
 import News from "../components/news/News";
 import Epidemic from '../views/Epidemic.vue'
 
@@ -32,6 +33,11 @@ const routes = [
     name: 'News',
     component: News
   },
+    {
+        path: '/news2',
+        name: 'News2',
+        component: Info
+    },
     {
         path: '/',
         name: 'Home',
