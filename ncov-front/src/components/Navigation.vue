@@ -8,8 +8,9 @@
                 <el-col :span="16" style="text-align: right">
                     <router-link to="/"><button>首页</button></router-link>
                     <router-link to="/epidemic"><button>实时疫情</button></router-link>
-                    <router-link to="/"><button>信息资讯</button></router-link>
-                        <router-link to="/"><button>SARS</button></router-link>
+                    <router-link to="/news"><button>信息资讯</button></router-link>
+                    <router-link to="/"><button>SARS</button></router-link>
+                    <router-link to="/about"><button>关于我们</button></router-link>
                 </el-col>
             </el-row>
 
