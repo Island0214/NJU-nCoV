@@ -12,7 +12,7 @@ Vue.config.productionTip = false
 
 
 var axios = require('axios')
-axios.defaults.baseURL = 'http://localhost:8443/api'
+axios.defaults.baseURL = 'https://lab.isaaclin.cn/nCoV/api/'
 
 Vue.prototype.$axios = axios
 

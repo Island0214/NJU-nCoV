@@ -24,15 +24,29 @@
 <script>
     import news_detail from "./NewsDetail";
     import rumors_detail from "./RumorsDetail";
+    import {api} from "../../request/api";
+
 
     const news = require('../../../static/news');
     const rumors = require('../../../static/rumors');
     export default {
         data() {
+            // 调用api接口，并且提供了两个参数
+            //setTimeout(function(){console.log(re)},2000)
             return {
                 news: news.results,
                 rumors: rumors.results
             }
+        },
+        created() {
+
+
+            api.apiAddress(
+                "news" ,50
+            ).then(res => {
+                this.news = res.results;
+            }) ;
+
         },
         components: {
             'v-news-detail': news_detail,
