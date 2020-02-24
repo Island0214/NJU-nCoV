@@ -7,7 +7,7 @@
                     <el-col :span="12">
                         <div class="data-wrapper">
                             <h1>实时疫情动态</h1>
-                            <p>数据截止2020-02-19 18:58</p>
+                            <p>数据截止{{this.curTime}}</p>
                             <h1>——</h1>
 
                             <h4>累计确诊人数</h4>
@@ -109,7 +109,8 @@
                         data: [100, 1213, 122, 342, 1236, 41, 123]
                     }]
                 },
-                chartType: 'new'
+                chartType: 'new',
+                curTime: '2020-02-24 18:00'
             }
         },
         watch: {
@@ -262,10 +263,25 @@
                     name: param.name,
                     value: isNaN(param.value) ? 0 : param.value,
                 };
+            },
+            getLocalData() {
+                let storage = window.localStorage;
+                this.statistic.totalDiagnosis = storage.getItem("confirmedCount");
+                this.statistic.totalDiagnosisIncrement = storage.getItem("confirmedIncr");
+                this.statistic.currentDiagnosis = storage.getItem("currentConfirmedCount");
+                this.statistic.currentDiagnosisIncrement = storage.getItem("currentConfirmedIncr");
+                this.statistic.currentSuspect = storage.getItem("suspectedCount");
+                this.statistic.currentSuspectIncrement = storage.getItem("suspectedIncr");
+                this.statistic.totalDeath = storage.getItem("deadCount");
+                this.statistic.totalDeathIncrement = storage.getItem("deadIncr");
+                this.statistic.totalHealing = storage.getItem("curedCount");
+                this.statistic.totalHealingIncrement = storage.getItem("curedIncr");
+                this.curTime = storage.getItem("date");
             }
         },
         mounted() {
             this.chinaConfigure();
+            this.getLocalData();
         }
     }
 </script>

@@ -89,12 +89,28 @@
                     this.covid.seriousCount = res.results[0].seriousCount;
                     this.covid.seriousIncr = res.results[0].seriousIncr;
                     this.covid.updateTime = res.results[0].updateTime;
+                    let storage = window.localStorage;
+                    storage.setItem("currentConfirmedCount", res.results[0].currentConfirmedCount);
+                    storage.setItem("currentConfirmedIncr", res.results[0].currentConfirmedIncr);
+                    storage.setItem("confirmedCount", res.results[0].confirmedCount);
+                    storage.setItem("confirmedIncr", res.results[0].confirmedIncr);
+                    storage.setItem("suspectedCount", res.results[0].suspectedCount);
+                    storage.setItem("suspectedIncr", res.results[0].suspectedIncr);
+                    storage.setItem("curedCount", res.results[0].curedCount);
+                    storage.setItem("curedIncr", res.results[0].curedIncr);
+                    storage.setItem("deadCount", res.results[0].deadCount);
+                    storage.setItem("deadIncr", res.results[0].deadIncr);
+                    storage.setItem("seriousCount", res.results[0].seriousCount);
+                    storage.setItem("seriousIncr", res.results[0].seriousIncr);
+                    storage.setItem("updateTime", res.results[0].updateTime);
                 })
         },
         methods: {
             getCurTime: function () {
                 let d = new Date();
-                return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()+' '+d.getHours()+':'+d.getMinutes();
+                let date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()+' '+d.getHours()+':'+d.getMinutes();
+                localStorage.setItem("date", date);
+                return date;
             }
         },
     }
