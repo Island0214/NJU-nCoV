@@ -22,16 +22,16 @@
             <el-col :span="12">
                 <div class="overview-wrapper">
                     <h2>Epidemic Overview</h2>
-                    <p>数据截止2020-02-19 18:58</p>
+                    <p>数据截止{{getCurTime()}}</p>
                     <h1>——</h1>
                     <h4>累计确诊人数</h4>
-                    <h2>74282</h2>
+                    <h2>{{covid.confirmedCount}}</h2>
                     <h4>昨日新增确诊</h4>
-                    <h2>1754</h2>
+                    <h2>{{covid.confirmedIncr}}</h2>
                     <h4>累计治愈人数</h4>
-                    <h2>14770</h2>
+                    <h2>{{covid.curedCount}}</h2>
                     <h4>累计死亡人数</h4>
-                    <h2>2009</h2>
+                    <h2>{{covid.deadCount}}</h2>
                 </div>
                 <div class="right-wrapper">
                     <!--<h4>DATA SOURCES</h4>-->
@@ -47,12 +47,56 @@
 </template>
 
 <script>
+    import {api} from "../request/api";
     // @ is an alias to /src
     export default {
         name: 'Home',
         components: {
 
-        }
+        },
+        data() {
+            return {
+                covid: {
+                    currentConfirmedCount: '',      // 现存确诊人数 confirmedCount(Incr) - curedCount(Incr) - deadCount(Incr)
+                    currentConfirmedIncr: '',       // 新增现存确诊人数
+                    confirmedCount: '',             // 累计确诊人数
+                    confirmedIncr: '',              // 新增确诊人数
+                    suspectedCount: '',             // 疑似确诊人数
+                    suspectedIncr: '',              // 新增疑似确诊人数
+                    curedCount: '',                 // 治愈人数
+                    curedIncr: '',                  // 新增治愈人数
+                    deadCount: '',                  // 死亡人数
+                    deadIncr: '',                   // 新增死亡人数
+                    seriousCount: '',               // 重症人数
+                    seriousIncr: '',                // 新增重症人数
+                    updateTime: '',                 // 数据最后变动时间
+                },
+            };
+        },
+        mounted() {
+            api.getOverall(1)
+                .then(res => {
+                    this.covid.currentConfirmedCount = res.results[0].currentConfirmedCount;
+                    this.covid.currentConfirmedIncr = res.results[0].currentConfirmedIncr;
+                    this.covid.confirmedCount = res.results[0].confirmedCount;
+                    this.covid.confirmedIncr = res.results[0].confirmedIncr;
+                    this.covid.suspectedCount = res.results[0].suspectedCount;
+                    this.covid.suspectedIncr = res.results[0].suspectedIncr;
+                    this.covid.curedCount = res.results[0].curedCount;
+                    this.covid.curedIncr = res.results[0].curedIncr;
+                    this.covid.deadCount = res.results[0].deadCount;
+                    this.covid.deadIncr = res.results[0].deadIncr;
+                    this.covid.seriousCount = res.results[0].seriousCount;
+                    this.covid.seriousIncr = res.results[0].seriousIncr;
+                    this.covid.updateTime = res.results[0].updateTime;
+                })
+        },
+        methods: {
+            getCurTime: function () {
+                let d = new Date();
+                return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()+' '+d.getHours()+':'+d.getMinutes();
+            }
+        },
     }
 </script>
 

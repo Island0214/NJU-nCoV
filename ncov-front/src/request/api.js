@@ -6,6 +6,14 @@ export const api = {
 
         return get(paramObj, {num:nums})
 
+    },
+
+    apiGet: function(paramObj, paras){
+        return get(paramObj, paras);
+    },
+
+    getOverall: function (latest) {
+        return get("overall", {latest:latest})
     }
 
 }
