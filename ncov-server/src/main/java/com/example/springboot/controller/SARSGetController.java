@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 public class SARSGetController {
 
-    @Autowired
     private static List<SingleData> lists;
 
     /**

@@ -31,58 +31,31 @@ public class COVIDData {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("currentConfirmedCount: ").append(currentConfirmedCount).append("\n")
-                .append("currentConfirmedIncr: ").append(currentConfirmedIncr).append("\n")
-                .append("confirmedCount: ").append(confirmedCount).append("\n")
-                .append("confirmedIncr: ").append(confirmedIncr).append("\n")
-                .append("suspectedCount: ").append(suspectedCount).append("\n")
-                .append("suspectedIncr: ").append(suspectedIncr).append("\n")
-                .append("curedCount: ").append(curedCount).append("\n")
-                .append("curedIncr: ").append(curedIncr).append("\n")
-                .append("deadCount: ").append(deadCount).append("\n")
-                .append("deadIncr: ").append(deadIncr).append("\n")
-                .append("seriousCount: ").append(seriousCount).append("\n")
-                .append("seriousIncr: ").append(seriousIncr).append("\n")
-                .append("generalRemark: ").append(generalRemark).append("\n")
-                .append("remark1: ").append(remark1).append("\n")
-                .append("remark2: ").append(remark2).append("\n")
-                .append("remark3: ").append(remark3).append("\n")
-                .append("remark4: ").append(remark4).append("\n")
-                .append("remark5: ").append(remark5).append("\n")
-                .append("note1: ").append(note1).append("\n")
-                .append("note2: ").append(note2).append("\n")
-                .append("note3: ").append(note3).append("\n")
-                .append("updateTime: ").append(updateTime).append("\n");
-        return sb.toString();
+        return "COVIDData{" +
+                "currentConfirmedCount=" + currentConfirmedCount +
+                ", currentConfirmedIncr=" + currentConfirmedIncr +
+                ", confirmedCount=" + confirmedCount +
+                ", confirmedIncr=" + confirmedIncr +
+                ", suspectedCount=" + suspectedCount +
+                ", suspectedIncr=" + suspectedIncr +
+                ", curedCount=" + curedCount +
+                ", curedIncr=" + curedIncr +
+                ", deadCount=" + deadCount +
+                ", deadIncr=" + deadIncr +
+                ", seriousCount=" + seriousCount +
+                ", seriousIncr=" + seriousIncr +
+                ", generalRemark='" + generalRemark + '\'' +
+                ", remark1='" + remark1 + '\'' +
+                ", remark2='" + remark2 + '\'' +
+                ", remark3='" + remark3 + '\'' +
+                ", remark4='" + remark4 + '\'' +
+                ", remark5='" + remark5 + '\'' +
+                ", note1='" + note1 + '\'' +
+                ", note2='" + note2 + '\'' +
+                ", note3='" + note3 + '\'' +
+                ", updateTime='" + updateTime + '\'' +
+                '}';
     }
-
-    /*
-    public COVIDData(int currentConfirmedCount, int currentConfirmedIncr, int confirmedCount, int confirmedIncr, int suspectedCount, int suspectedIncr, int curedCount, int curedIncr, int deadCount, int deadIncr, int seriousCount, int seriousIncr, String generalRemark, String remark1, String remark2, String remark3, String remark4, String remark5, String note1, String note2, String note3, String updateTime) {
-        this.currentConfirmedCount = currentConfirmedCount;
-        this.currentConfirmedIncr = currentConfirmedIncr;
-        this.confirmedCount = confirmedCount;
-        this.confirmedIncr = confirmedIncr;
-        this.suspectedCount = suspectedCount;
-        this.suspectedIncr = suspectedIncr;
-        this.curedCount = curedCount;
-        this.curedIncr = curedIncr;
-        this.deadCount = deadCount;
-        this.deadIncr = deadIncr;
-        this.seriousCount = seriousCount;
-        this.seriousIncr = seriousIncr;
-        this.generalRemark = generalRemark;
-        this.remark1 = remark1;
-        this.remark2 = remark2;
-        this.remark3 = remark3;
-        this.remark4 = remark4;
-        this.remark5 = remark5;
-        this.note1 = note1;
-        this.note2 = note2;
-        this.note3 = note3;
-        this.updateTime = updateTime;
-    }
-    */
 
     public int getCurrentConfirmedCount() {
         return currentConfirmedCount;
