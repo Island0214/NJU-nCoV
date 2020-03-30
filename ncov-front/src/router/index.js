@@ -42,6 +42,12 @@ const routes = [
         path: '/epidemic',
         name: 'Epidemic',
         component: Epidemic
+    },
+    // for test
+    {
+        path: '/sars',
+        name: 'RequestSarsData',
+        component: RequestSarsData
     }
 ]
 
