@@ -3,7 +3,9 @@ package com.example.springboot.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.example.springboot.Constants;
 import com.example.springboot.Utils.TimeStampUtil;
+import com.example.springboot.model.COVIDNewsModel;
 import com.example.springboot.pojo.COVIDNews;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -75,6 +77,19 @@ public class COVIDNewsGetController {
         }
         return sb.toString();
     }
+
+    @RequestMapping(value = "/api/news", method = RequestMethod.GET)
+    public List<COVIDNews> getCOVIDNews(@RequestParam(value = "num", required = false) Integer num) {
+        if(num != null) {
+            if(num <= Constants.NEWSCOUNT)
+                return COVIDNewsModel.getNewsList().subList(0,num);
+            else
+                return COVIDNewsModel.getNewsList();
+        } else {
+            return COVIDNewsModel.getNewsList();
+        }
+    }
+
 
     public static void main(String[] args) {
         System.out.println(TimeStampUtil.stampToDate("1585053527000"));

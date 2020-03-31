@@ -76,33 +76,35 @@
         mounted() {
             api.getOverall(1)
                 .then(res => {
-                    this.covid.currentConfirmedCount = res.results[0].currentConfirmedCount;
-                    this.covid.currentConfirmedIncr = res.results[0].currentConfirmedIncr;
-                    this.covid.confirmedCount = res.results[0].confirmedCount;
-                    this.covid.confirmedIncr = res.results[0].confirmedIncr;
-                    this.covid.suspectedCount = res.results[0].suspectedCount;
-                    this.covid.suspectedIncr = res.results[0].suspectedIncr;
-                    this.covid.curedCount = res.results[0].curedCount;
-                    this.covid.curedIncr = res.results[0].curedIncr;
-                    this.covid.deadCount = res.results[0].deadCount;
-                    this.covid.deadIncr = res.results[0].deadIncr;
-                    this.covid.seriousCount = res.results[0].seriousCount;
-                    this.covid.seriousIncr = res.results[0].seriousIncr;
-                    this.covid.updateTime = res.results[0].updateTime;
+                    console.log(res);
+                    
+                    this.covid.currentConfirmedCount = res.currentConfirmedCount;
+                    this.covid.currentConfirmedIncr = res.currentConfirmedIncr;
+                    this.covid.confirmedCount = res.confirmedCount;
+                    this.covid.confirmedIncr = res.confirmedIncr;
+                    this.covid.suspectedCount = res.suspectedCount;
+                    this.covid.suspectedIncr = res.suspectedIncr;
+                    this.covid.curedCount = res.curedCount;
+                    this.covid.curedIncr = res.curedIncr;
+                    this.covid.deadCount = res.deadCount;
+                    this.covid.deadIncr = res.deadIncr;
+                    this.covid.seriousCount = res.seriousCount;
+                    this.covid.seriousIncr = res.seriousIncr;
+                    this.covid.updateTime = res.updateTime;
                     let storage = window.localStorage;
-                    storage.setItem("currentConfirmedCount", res.results[0].currentConfirmedCount);
-                    storage.setItem("currentConfirmedIncr", res.results[0].currentConfirmedIncr);
-                    storage.setItem("confirmedCount", res.results[0].confirmedCount);
-                    storage.setItem("confirmedIncr", res.results[0].confirmedIncr);
-                    storage.setItem("suspectedCount", res.results[0].suspectedCount);
-                    storage.setItem("suspectedIncr", res.results[0].suspectedIncr);
-                    storage.setItem("curedCount", res.results[0].curedCount);
-                    storage.setItem("curedIncr", res.results[0].curedIncr);
-                    storage.setItem("deadCount", res.results[0].deadCount);
-                    storage.setItem("deadIncr", res.results[0].deadIncr);
-                    storage.setItem("seriousCount", res.results[0].seriousCount);
-                    storage.setItem("seriousIncr", res.results[0].seriousIncr);
-                    storage.setItem("updateTime", res.results[0].updateTime);
+                    storage.setItem("currentConfirmedCount", res.currentConfirmedCount);
+                    storage.setItem("currentConfirmedIncr", res.currentConfirmedIncr);
+                    storage.setItem("confirmedCount", res.confirmedCount);
+                    storage.setItem("confirmedIncr", res.confirmedIncr);
+                    storage.setItem("suspectedCount", res.suspectedCount);
+                    storage.setItem("suspectedIncr", res.suspectedIncr);
+                    storage.setItem("curedCount", res.curedCount);
+                    storage.setItem("curedIncr", res.curedIncr);
+                    storage.setItem("deadCount", res.deadCount);
+                    storage.setItem("deadIncr", res.deadIncr);
+                    storage.setItem("seriousCount", res.seriousCount);
+                    storage.setItem("seriousIncr", res.seriousIncr);
+                    storage.setItem("updateTime", res.updateTime);
                 })
         },
         methods: {

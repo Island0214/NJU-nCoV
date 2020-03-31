@@ -3,6 +3,7 @@ package com.example.springboot.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.example.springboot.model.COVIDDataModel;
 import com.example.springboot.pojo.COVIDData;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -14,9 +15,11 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -27,6 +30,10 @@ import java.util.List;
 @RestController
 public class COVIDDataGetController {
 
+    @Autowired
+    private static void init(){
+        // System.out.println("Init COVIDDataGetController");
+    }
 
     @RequestMapping(value = "/api/COVIDGet", method = RequestMethod.GET)
     public String getData() throws IOException {
@@ -47,5 +54,12 @@ public class COVIDDataGetController {
 
         return data.toString();
     }
+
+    @RequestMapping(value = "/api/overall", method = RequestMethod.GET)
+    public COVIDData getOverall(@RequestParam(value = "latest", required = false) Integer latest) {
+        System.out.println(this.getClass().getName()+" "+System.currentTimeMillis()+": Request data. latest:"+latest);
+        return COVIDDataModel.getData();
+    }
+
 
 }

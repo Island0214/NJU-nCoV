@@ -32,7 +32,8 @@ axios.interceptors.response.use(response => {
   return Promise.resolve(error.response)
 })
 
-export function get(url, params){    
+export function get(url, params){
+  console.log("GET URL: "+url);
     return new Promise((resolve, reject) =>{        
         axios.get(url, {            
             params: params        

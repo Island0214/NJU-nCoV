@@ -1,39 +1,51 @@
-package com.example.springboot.controller;
+package com.example.springboot.model;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.springboot.Constants;
-import com.example.springboot.model.COVIDNewsModel;
-import com.example.springboot.model.COVIDRumorModel;
-import com.example.springboot.pojo.COVIDNews;
+import com.example.springboot.Utils.LogGenerate;
 import com.example.springboot.pojo.COVIDRumor;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-public class COVIDRumorGetController {
+/**
+ * 运行时初始化，顺序3
+ * 加载COVID谣言
+ */
+@Component
+@Order(3)
+@EnableScheduling
+public class COVIDRumorModel implements ApplicationRunner {
 
-    public List<COVIDRumor> rumorList = new ArrayList<>();
+    private static List<COVIDRumor> rumorList = new ArrayList<>();
 
-    /**
-     * 返回流言信息
-     * @param rumorType
-     * @param page
-     * @param num
-     * @return
-     */
-    @RequestMapping(value = "/api/COVIDRumor", method = RequestMethod.GET)
-    public String getRumors(@RequestParam(value = "rumorType", required = false) String rumorType,
-                            @RequestParam(value = "page", required = false) Integer page,
-                            @RequestParam(value = "num", required = false) Integer num) {
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        System.out.println(LogGenerate.log(this.getClass(), "Init COVIDRumorModel."));
+        // 初始化List
+        getCOVIDRumorsFromAPI();
+        System.out.println(LogGenerate.log(this.getClass(), "COVID Rumors Loaded."));
+    }
+
+    @Scheduled(initialDelay=2000, fixedRate=1000*60*60*6+30000)      // 每隔六小时更新一次
+    public void getCOVIDRumorsFromAPI() throws InterruptedException {
+        // 延迟2s，防止503错误
+        Thread.sleep(2000);
+
+        getCOVIDRumors(null, null, Constants.RUMORCOUNT);
+    }
+
+    public void getCOVIDRumors(String rumorType, Integer page, Integer num) {
         rumorList = new ArrayList<>();
 
         // 确定访问的URL
@@ -64,24 +76,9 @@ public class COVIDRumorGetController {
             JSONObject jsonObject = newsArr.getJSONObject(i);
             rumorList.add(JSONObject.toJavaObject(jsonObject, COVIDRumor.class));
         }
-
-        sb = new StringBuilder();
-        for(COVIDRumor news: rumorList) {
-            sb.append(news.toString()).append("\n");
-        }
-        return sb.toString();
     }
 
-    @RequestMapping(value = "/api/rumor", method = RequestMethod.GET)
-    public List<COVIDRumor> getCOVIDNews(@RequestParam(value = "num", required = false) Integer num) {
-        if(num != null) {
-            if(num <= Constants.RUMORCOUNT)
-                return COVIDRumorModel.getRumorList().subList(0,num);
-            else
-                return COVIDRumorModel.getRumorList();
-        } else {
-            return COVIDRumorModel.getRumorList();
-        }
+    public static List<COVIDRumor> getRumorList() {
+        return rumorList;
     }
-
 }

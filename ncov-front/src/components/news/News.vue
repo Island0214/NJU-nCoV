@@ -40,11 +40,20 @@
         },
         created() {
 
+            api.apiAddress(
+                "news" , 20
+            ).then(res => {
+                console.log(res);
+                // this.news = res.results;
+                this.news = res;
+            });
 
             api.apiAddress(
-                "news" ,50
+                "rumor" , 20
             ).then(res => {
-                this.news = res.results;
+                console.log(res);
+                // this.news = res.results;
+                this.rumors = res;
             }) ;
 
         },
