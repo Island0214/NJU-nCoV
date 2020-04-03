@@ -276,6 +276,7 @@
                 this.statistic.totalDeathIncrement = storage.getItem("deadIncr");
                 this.statistic.totalHealing = storage.getItem("curedCount");
                 this.statistic.totalHealingIncrement = storage.getItem("curedIncr");
+                this.country.value = storage.getItem("confirmedCount");
                 this.curTime = storage.getItem("date");
             }
         },
