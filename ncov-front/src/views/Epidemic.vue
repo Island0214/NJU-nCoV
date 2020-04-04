@@ -35,13 +35,13 @@
                             <h2>{{area.name}}<br>{{area.value}}</h2> -->
                             <h2>{{area.name}}</h2>
                             <h1>——</h1>
-                            <h4>感染人数</h4>
+                            <h4>总感染人数</h4>
                             <p>Number of Infected People</p>
                             <h2>{{area.value}}</h2>
                             <h4>治愈人数</h4>
                             <p>Number of Cured People</p>
                             <h2>{{area.cured}}</h2>
-                            <h4>剩余人数</h4>
+                            <h4>剩余感染人数</h4>
                             <p>Number of Current Infected People</p>
                             <h2>{{area.current}}</h2>
                         </div>

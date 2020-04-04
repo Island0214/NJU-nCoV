@@ -15,15 +15,29 @@ public class SingleData {
     int month;
     int day;
 
-    public SingleData(String date, int confirm, int dead, int suspect) {
-        this.date = date;
-        this.confirm = confirm;
-        this.dead = dead;
-        this.suspect = suspect;
-        String[] dateArr = date.split("-");
-        this.year = Integer.parseInt(dateArr[0]);
-        this.month = Integer.parseInt(dateArr[1]);
-        this.day = Integer.parseInt(dateArr[2]);
+//    public SingleData(String date, int confirm, int dead, int suspect) {
+//        this.date = date;
+//        this.confirm = confirm;
+//        this.dead = dead;
+//        this.suspect = suspect;
+//        String[] dateArr = date.split("-");
+//        this.year = Integer.parseInt(dateArr[0]);
+//        this.month = Integer.parseInt(dateArr[1]);
+//        this.day = Integer.parseInt(dateArr[2]);
+//    }
+
+
+    @Override
+    public String toString() {
+        return "SingleData{" +
+                "date='" + date + '\'' +
+                ", confirm=" + confirm +
+                ", dead=" + dead +
+                ", suspect=" + suspect +
+                ", year=" + year +
+                ", month=" + month +
+                ", day=" + day +
+                '}';
     }
 
     public String getDate() {

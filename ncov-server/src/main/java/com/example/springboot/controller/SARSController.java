@@ -3,8 +3,11 @@ package com.example.springboot.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.example.springboot.Utils.LogGenerate;
 import com.example.springboot.pojo.Country;
 import com.example.springboot.pojo.SingleData;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
@@ -45,8 +48,19 @@ import java.util.*;
  * }
  */
 
-@Controller
-public class SARSController {
+@RestController
+public class SARSController implements ApplicationRunner {
+
+    static List<SingleData> lists = new ArrayList<>();
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        String path = SARSController.class.getClassLoader().getResource("static/sars.json").getPath();
+        String s = readJsonFile(path);
+        JSONArray jarr = JSON.parseArray(s);
+        lists = JSONArray.parseArray(jarr.toJSONString(), SingleData.class);
+    }
+
     @CrossOrigin
     @PostMapping(value = "api/sars")
     @ResponseBody
@@ -68,7 +82,12 @@ public class SARSController {
         }
     }
 
-    private static List<SingleData> lists;
+    @RequestMapping(value = "/api/getAllSarsData", method = RequestMethod.GET)
+    public List<SingleData> getAllSarsData(
+            @RequestParam(value = "countryName", required = false) String countryName) {
+        System.out.println(LogGenerate.log(this.getClass(), "Request all SARS Data."));
+        return lists;
+    }
 
     public SARSController() {
 
@@ -84,10 +103,6 @@ public class SARSController {
      */
     private static int[] getCaseNumber(String country, int year, int month, int day){
         System.out.println("Request: "+country+", "+year+", "+month+", "+day);
-        String path = SARSController.class.getClassLoader().getResource("static/sars.json").getPath();
-        String s = readJsonFile(path);
-        JSONArray jarr = JSON.parseArray(s);
-        List<SingleData> lists = JSONArray.parseArray(jarr.toJSONString(), SingleData.class);
 
         SingleData res = null;
         for(SingleData sd: lists){
