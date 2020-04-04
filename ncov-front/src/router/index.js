@@ -6,6 +6,7 @@ import News from "../components/news/News";
 import Epidemic from '../views/Epidemic.vue'
 
 import RequestSarsData from "../components/RequestSarsData";
+import Sars from "../views/Sars.vue"
 
 Vue.use(VueRouter)
 
@@ -43,9 +44,14 @@ const routes = [
         name: 'Epidemic',
         component: Epidemic
     },
-    // for test
     {
         path: '/sars',
+        name: 'Sars',
+        component: Sars
+    },
+    // for test
+    {
+        path: '/sarsTest',
         name: 'RequestSarsData',
         component: RequestSarsData
     }
