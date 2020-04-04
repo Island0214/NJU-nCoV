@@ -19,20 +19,20 @@ import java.nio.charset.StandardCharsets;
  * 加载COVID数据
  */
 @Component
-@Order(1)
+//@Order(1)
 @EnableScheduling
-public class COVIDDataModel implements ApplicationRunner {
+public class COVIDDataModel {
 
     private static COVIDData data = null;
 
-    @Override
-    public void run(ApplicationArguments args) throws Exception {
-        System.out.println(this.getClass().getName()+": Init COVIDDataGetController");
-        getCOVIDDataFromAPI();
-        System.out.println(this.getClass().getName()+": "+"COVID Data Loaded.");
-    }
+//    @Override
+//    public void run(ApplicationArguments args) throws Exception {
+//        System.out.println(this.getClass().getName()+": Init COVIDDataGetController");
+//        getCOVIDDataFromAPI();
+//        System.out.println(this.getClass().getName()+": "+"COVID Data Loaded.");
+//    }
 
-    @Scheduled(initialDelay=2000,fixedRate=1000*60*60*6+10000)      // 每隔六小时更新一次
+    @Scheduled(initialDelay=1000,fixedRate=1000*60*60*6+10000)      // 每隔六小时更新一次
     public void getCOVIDDataFromAPI() throws InterruptedException {
         // 延迟2s，防止503错误
         // Thread.sleep(2000);

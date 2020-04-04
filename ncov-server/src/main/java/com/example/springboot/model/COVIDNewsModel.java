@@ -24,24 +24,24 @@ import java.util.List;
  * 加载COVID新闻
  */
 @Component
-@Order(2)
+//@Order(2)
 @EnableScheduling
-public class COVIDNewsModel implements ApplicationRunner {
+public class COVIDNewsModel {
 
     private static List<COVIDNews> newsList = new ArrayList<>();
 
-    @Override
-    public void run(ApplicationArguments args) throws Exception {
-        System.out.println(LogGenerate.log(this.getClass(), "Init COVIDNewsModel."));
-        // 初始化List
-        getCOVIDNewsFromAPI();
-        System.out.println(LogGenerate.log(this.getClass(), "COVID News Loaded."));
-    }
+//    @Override
+//    public void run(ApplicationArguments args) throws Exception {
+//        System.out.println(LogGenerate.log(this.getClass(), "Init COVIDNewsModel."));
+//        // 初始化List
+//        getCOVIDNewsFromAPI();
+//        System.out.println(LogGenerate.log(this.getClass(), "COVID News Loaded."));
+//    }
 
     @Scheduled(initialDelay=2000, fixedRate=1000*60*60*6+20000)      // 每隔六小时更新一次
     public void getCOVIDNewsFromAPI() throws InterruptedException {
         // 延迟2s，防止503错误
-        Thread.sleep(2000);
+        // Thread.sleep(2000);
 
         getCOVIDNews(null, null, Constants.NEWSCOUNT, null);
     }

@@ -14,6 +14,10 @@ export const api = {
 
     getOverall: function (latest) {
         return get("overall", {latest:latest})
-    }
+    },
+
+    getAreaData: function (provinceName) {
+        return get("areaData", {provinceName:provinceName})
+    },
 
 }

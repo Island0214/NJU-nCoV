@@ -29,12 +29,23 @@
                     </el-col>
                     <el-col :span="12">
                         <div class="area-wrapper">
-                            <h4>感染人数</h4>
+                            <!-- <h4>感染人数</h4>
                             <p>Number of Infected People</p>
                             <h1>——</h1>
-                            <h2>{{area.name}}<br>{{area.value}}</h2>
+                            <h2>{{area.name}}<br>{{area.value}}</h2> -->
+                            <h2>{{area.name}}</h2>
+                            <h1>——</h1>
+                            <h4>感染人数</h4>
+                            <p>Number of Infected People</p>
+                            <h2>{{area.value}}</h2>
+                            <h4>治愈人数</h4>
+                            <p>Number of Cured People</p>
+                            <h2>{{area.cured}}</h2>
+                            <h4>剩余人数</h4>
+                            <p>Number of Current Infected People</p>
+                            <h2>{{area.current}}</h2>
                         </div>
-                    </el-col>
+                    </el-col>        
                 </el-row>
             </div>
         </div>
@@ -69,6 +80,7 @@
     import LineChart from '../components/charts/LineChart.vue'
     import StackAreaChart from '../components/charts/StackAreaChart.vue'
     import Footer from '../components/Footer.vue'
+    import {api} from "../request/api";
 
     export default {
         name: "Epidemic",
@@ -93,11 +105,15 @@
                 },
                 area: {
                     name: '全国',
-                    value: 74282
+                    value: 74282,
+                    cured: 0,
+                    current: 0
                 },
                 country: {
                     name: '全国',
-                    value: 74282
+                    value: 74282,
+                    cured: 0,
+                    current: 0
                 },
                 chartData: {
                     xAxis: ['2020-02-13', '2020-02-14', '2020-02-15', '2020-02-16', '2020-02-17', '2020-02-18', '2020-02-19'],
@@ -109,6 +125,14 @@
                         data: [100, 1213, 122, 342, 1236, 41, 123]
                     }]
                 },
+                provinceName: {
+                    name: ['黑龙江','辽宁','吉林','北京','天津','河北','内蒙古','宁夏','山西','陕西','山东','江苏','安徽','上海',
+                    '浙江','福建','河南','湖南','湖北','江西','广东','广西','海南','澳门','香港','台湾','四川','贵州','云南','重庆',
+                    '甘肃','青海','西藏','新疆']
+                },
+                provinceData: [
+                    // {"name":"山东", "value":"123"}, {"name":"江苏", "value":"999"}
+                ],
                 chartType: 'new',
                 curTime: '2020-02-24 18:00'
             }
@@ -227,31 +251,41 @@
                             name: '启动次数',
                             type: 'map',
                             geoIndex: 0,
-                            data: [{
-                                "name": "北京",
-                                "value": 599
-                            }, {
-                                "name": "上海",
-                                "value": 142
-                            }, {
-                                "name": "黑龙江",
-                                "value": 44
-                            }, {
-                                "name": "深圳",
-                                "value": 92
-                            }, {
-                                "name": "湖北",
-                                "value": 810
-                            }, {
-                                "name": "四川",
-                                "value": 453
-                            }]
+                            data: this.testData
+                            // data: [{
+                            //     "name": "北京",
+                            //     "value": 599
+                            // }, {
+                            //     "name": "上海",
+                            //     "value": 142
+                            // }, {
+                            //     "name": "黑龙江",
+                            //     "value": 44
+                            // }, {
+                            //     "name": "深圳",
+                            //     "value": 92
+                            // }, {
+                            //     "name": "湖北",
+                            //     "value": 810
+                            // }, {
+                            //     "name": "四川",
+                            //     "value": 453
+                            // }]
                         }
                     ]
                 });
 
                 myChart.on('mouseover', function (params) {
-                    that.currentData(params);
+                    api.getAreaData(params.name).then (
+                        res => {
+                            // console.log(res.confirmedCount);
+                            params.value = res.confirmedCount;
+                            params.cured = res.curedCount;
+                            params.current = res.currentConfirmedCount;
+                            that.currentData(params);
+                        }
+                    )
+                    
                 });
 
                 myChart.on('mouseout', function () {
@@ -262,6 +296,8 @@
                 this.area = {
                     name: param.name,
                     value: isNaN(param.value) ? 0 : param.value,
+                    cured: isNaN(param.cured) ? 0 : param.cured,
+                    current: isNaN(param.current) ? 0 : param.current,
                 };
             },
             getLocalData() {
@@ -277,12 +313,53 @@
                 this.statistic.totalHealing = storage.getItem("curedCount");
                 this.statistic.totalHealingIncrement = storage.getItem("curedIncr");
                 this.country.value = storage.getItem("confirmedCount");
+                this.country.cured = storage.getItem("curedCount");
+                this.country.current = storage.getItem("currentConfirmedCount");
                 this.curTime = storage.getItem("date");
-            }
+            },
+            updateMap() {
+                let myChart = echarts.init(this.$refs.myEchart);
+                myChart.setOption({
+                    series: [{
+                        type: 'scatter',
+                        coordinateSystem: 'geo' // 对应上方配置
+                    },
+                    {
+                        name: '启动次数',
+                        type: 'map',
+                        geoIndex: 0,
+                        data: this.provinceData
+                    }
+                    ]
+                })
+            },
+            initAreaData() {
+                console.log(this.provinceName.name);
+                for(let area of this.provinceName.name){
+                    console.log(area);
+                    api.getAreaData(area).then (
+                        res => {
+                            console.log(area+","+res.confirmedCount);
+                            let obj = {
+                                "name": area,
+                                // 这里返回的是剩余的人数（去除治愈）
+                                "value": res.currentConfirmedCount,
+                                "cured": res.curedCount,
+                                "current": res.currentConfirmedCount,
+                                // "value": res.confirmedCount
+                            };
+                            this.provinceData.push(obj);
+                            this.updateMap();
+                        }
+                    ); 
+                } 
+            },
+            
         },
         mounted() {
-            this.chinaConfigure();
             this.getLocalData();
+            this.initAreaData();
+            this.chinaConfigure();
         }
     }
 </script>
@@ -315,7 +392,8 @@
     .area-wrapper {
         text-align: right;
         position: absolute;
-        top: 72vh;
+        /* top: 72vh; */
+        top: 48vh;
         right: 0;
     }
 
