@@ -8,6 +8,7 @@ import com.example.springboot.pojo.Country;
 import com.example.springboot.pojo.SingleData;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
@@ -55,8 +56,10 @@ public class SARSController implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        String path = SARSController.class.getClassLoader().getResource("static/sars.json").getPath();
-        String s = readJsonFile(path);
+        // String path = SARSController.class.getClassLoader().getResource("static/sars.json").getPath();
+        String classPath = "static/sars.json";
+        // String s = readJsonFile(path);
+        String s = readJsonFileInputStream(classPath);
         JSONArray jarr = JSON.parseArray(s);
         lists = JSONArray.parseArray(jarr.toJSONString(), SingleData.class);
     }
@@ -139,6 +142,23 @@ public class SARSController implements ApplicationRunner {
             jsonStr = sb.toString();
             return jsonStr;
         } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private static String readJsonFileInputStream(String classPath) {
+        StringBuilder jsonStr = new StringBuilder();
+        try {
+            // 采用InputStream的方式进行读取，防止打包成jar之后无法获取到资源路径地址
+            InputStream is = new ClassPathResource(classPath).getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            String line = "";
+            while ((line = reader.readLine())!=null) {
+                jsonStr.append(line);
+            }
+            return jsonStr.toString();
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
