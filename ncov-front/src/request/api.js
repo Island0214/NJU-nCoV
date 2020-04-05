@@ -20,4 +20,8 @@ export const api = {
         return get("areaData", {provinceName:provinceName})
     },
 
+    getAllSarsData: function(country) {
+        return get("getAllSarsData", {country:country})
+    }
+
 }
