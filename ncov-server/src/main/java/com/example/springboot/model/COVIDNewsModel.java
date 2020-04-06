@@ -39,7 +39,7 @@ public class COVIDNewsModel {
 //        System.out.println(LogGenerate.log(this.getClass(), "COVID News Loaded."));
 //    }
 
-    @Scheduled(initialDelay=2000, fixedRate=1000*60*60*6+20000)      // 每隔六小时更新一次
+    @Scheduled(initialDelay=10000, fixedRate=1000*60*60*6+20000)      // 每隔六小时更新一次
     public void getCOVIDNewsFromAPI() throws InterruptedException {
         // 延迟2s，防止503错误
         // Thread.sleep(2000);

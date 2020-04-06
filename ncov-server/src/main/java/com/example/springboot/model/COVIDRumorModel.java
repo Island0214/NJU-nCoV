@@ -37,7 +37,7 @@ public class COVIDRumorModel {
 //        System.out.println(LogGenerate.log(this.getClass(), "COVID Rumors Loaded."));
 //    }
 
-    @Scheduled(initialDelay=3000, fixedRate=1000*60*60*6+30000)      // 每隔六小时更新一次
+    @Scheduled(initialDelay=12000, fixedRate=1000*60*60*6+30000)      // 每隔六小时更新一次
     public void getCOVIDRumorsFromAPI() throws InterruptedException {
         // 延迟2s，防止503错误
         // Thread.sleep(2000);
