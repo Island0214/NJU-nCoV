@@ -43,6 +43,10 @@ public class COVIDRumorModel {
         // Thread.sleep(2000);
 
         getCOVIDRumors(null, null, Constants.RUMORCOUNT);
+        while (rumorList.size()==0) {
+            Thread.sleep((long) (Math.random()*2000));
+            getCOVIDRumors(null, null, Constants.RUMORCOUNT);
+        }
     }
 
     public void getCOVIDRumors(String rumorType, Integer page, Integer num) {

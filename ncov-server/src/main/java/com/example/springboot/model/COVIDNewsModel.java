@@ -18,6 +18,7 @@ import javax.naming.Context;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * 运行时初始化，顺序2
@@ -44,6 +45,10 @@ public class COVIDNewsModel {
         // Thread.sleep(2000);
 
         getCOVIDNews(null, null, Constants.NEWSCOUNT, null);
+        while (newsList.size()==0) {
+            Thread.sleep((long) (Math.random()*2000));
+            getCOVIDNews(null, null, Constants.NEWSCOUNT, null);
+        }
     }
 
     public void getCOVIDNews(String province, Integer page, Integer num, String lang) {
