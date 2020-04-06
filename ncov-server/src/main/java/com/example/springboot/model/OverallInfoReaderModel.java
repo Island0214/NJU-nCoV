@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.Collator;
+import java.util.*;
 
 @Component
 @RestController
@@ -54,11 +52,11 @@ public class OverallInfoReaderModel implements ApplicationRunner {
         for(AreaDailyData single: lists) {
             int type = single.getCategory();
             String date = single.getDate();
-            if(type == 1) {
+            if (type == 1) {
                 // 国家单日数据
                 String country = single.getCountry();
                 List<AreaDailyData> list = countryDailyData.get(country);
-                if(list == null) {
+                if (list == null) {
                     list = new ArrayList<>();
                 }
                 list.add(single);
@@ -67,7 +65,7 @@ public class OverallInfoReaderModel implements ApplicationRunner {
                 // 省份单日数据
                 String province = single.getProvince();
                 List<AreaDailyData> list = provinceDailyData.get(province);
-                if(list == null) {
+                if (list == null) {
                     list = new ArrayList<>();
                 }
                 list.add(single);
@@ -76,7 +74,7 @@ public class OverallInfoReaderModel implements ApplicationRunner {
                 // 城市单日数据
                 String city = single.getCity();
                 List<AreaDailyData> list = cityDailyData.get(city);
-                if(list == null) {
+                if (list == null) {
                     list = new ArrayList<>();
                 }
                 list.add(single);
@@ -108,16 +106,15 @@ public class OverallInfoReaderModel implements ApplicationRunner {
     }
 
     public static void main(String[] args) {
-        String classPath = "static/Wuhan-2019-nCoV.json";
-        // String s = readJsonFile(path);
-        String s = readJsonFileInputStream(classPath);
-        JSONArray jarr = JSON.parseArray(s);
-        System.out.println(jarr.size());
-        List<AreaDailyData> lists = new ArrayList<>();
-        lists = JSONArray.parseArray(jarr.toJSONString(), AreaDailyData.class);
-        for(int i=0; i<100; i++) {
-            System.out.println(lists.get(i).toString());
-            System.out.println(lists.get(i).getCategory());
+//        String classPath = "static/Wuhan-2019-nCoV.json";
+//        // String s = readJsonFile(path);
+//        String s = readJsonFileInputStream(classPath);
+//        JSONArray jarr = JSON.parseArray(s);
+//        System.out.println(jarr.size());
+//        List<AreaDailyData> lists = new ArrayList<>();
+//        lists = JSONArray.parseArray(jarr.toJSONString(), AreaDailyData.class);
+        for(Map.Entry<String, List<AreaDailyData>> entry: countryDailyData.entrySet()) {
+            System.out.print("\""+entry.getKey()+"\", ");
         }
     }
 }
