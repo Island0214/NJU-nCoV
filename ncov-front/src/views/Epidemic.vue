@@ -64,7 +64,8 @@
                     </div>
                 </el-col>
                 <el-col :span="18">
-                    <StackAreaChart :data="chartData" v-if="chartType === 'total'"></StackAreaChart>
+                    <!-- <StackAreaChart :data="chartData" v-if="chartType === 'total'"></StackAreaChart> -->
+                    <StackAreaChart :data="chartData" v-if="chartType === 'stack'"></StackAreaChart>
                     <LineChart :data="chartData" v-else></LineChart>
                 </el-col>
             </el-row>
@@ -134,62 +135,74 @@
                     // {"name":"山东", "value":"123"}, {"name":"江苏", "value":"999"}
                 ],
                 chartType: 'new',
-                curTime: '2020-02-24 18:00'
+                curTime: '2020-02-24 18:00',
+                countrySerialData: {
+                    xAxis: [],
+                    series: [
+                        {
+                            name: '确诊人数',
+                            data: []
+                        }, {
+                            name: '治愈人数',
+                            data: []
+                        }, {
+                            name: '死亡人数',
+                            data: []
+                        }
+                    ]
+                },
+                newSerialData: {
+                    xAxis: [],
+                    series: [
+                        {
+                            name: '新增确诊人数',
+                            data: []
+                        }, {
+                            name: '新增疑似人数',
+                            data: []
+                        }
+                    ]
+                },
+                remainData: {
+                    xAxis: [],
+                    series: [
+                        {
+                            name: '现存确诊人数',
+                            data: []
+                        }, {
+                            name: '现存疑似人数',
+                            data: []
+                        }
+                    ]
+                },
+                finishData: {
+                    xAxis: [],
+                    series: [
+                        {
+                            name: '治愈人数',
+                            data: []
+                        }, {
+                            name: '死亡人数',
+                            data: []
+                        }
+                    ]
+                }
             }
         },
         watch: {
             chartType: function (type) {
                 switch (type) {
                     case 'new':
-                        this.chartData = {
-                            xAxis: ['2020-02-13', '2020-02-14', '2020-02-15', '2020-02-16', '2020-02-17', '2020-02-18', '2020-02-19'],
-                            series: [{
-                                name: '新增确诊人数',
-                                data: [820, 932, 901, 934, 1290, 1330, 1320]
-                            }, {
-                                name: '新增疑似人数',
-                                data: [100, 1213, 122, 342, 1236, 41, 123]
-                            }]
-                        };
+                        this.chartData = this.newSerialData;
                         break;
                     case 'current':
-                        this.chartData = {
-                            xAxis: ['2020-02-13', '2020-02-14', '2020-02-15', '2020-02-16', '2020-02-17', '2020-02-18', '2020-02-19'],
-                            series: [{
-                                name: '现存确诊人数',
-                                data: [820, 932, 901, 934, 1290, 1330, 1320]
-                            }, {
-                                name: '现存疑似人数',
-                                data: [100, 1213, 122, 342, 1236, 41, 123]
-                            }]
-                        };
+                        this.chartData = this.remainData;
                         break;
                     case 'finish':
-                        this.chartData = {
-                            xAxis: ['2020-02-13', '2020-02-14', '2020-02-15', '2020-02-16', '2020-02-17', '2020-02-18', '2020-02-19'],
-                            series: [{
-                                name: '死亡人数',
-                                data: [820, 932, 901, 934, 1290, 1330, 1320]
-                            }, {
-                                name: '治愈人数',
-                                data: [100, 1213, 122, 342, 1236, 41, 123]
-                            }]
-                        };
+                        this.chartData = this.finishData;
                         break;
                     case 'total':
-                        this.chartData = {
-                            xAxis: ['2020-02-13', '2020-02-14', '2020-02-15', '2020-02-16', '2020-02-17', '2020-02-18', '2020-02-19'],
-                            series: [{
-                                name: '死亡人数',
-                                data: [100, 1213, 122, 342, 1236, 41, 123]
-                            }, {
-                                name: '治愈人数',
-                                data: [100, 1213, 122, 342, 1236, 41, 123]
-                            }, {
-                                name: '确诊人数',
-                                data: [820, 932, 901, 934, 1290, 1330, 1320]
-                            }]
-                        }
+                        this.chartData = this.countrySerialData;
                         break;
                     default:
                         break;
@@ -252,25 +265,6 @@
                             type: 'map',
                             geoIndex: 0,
                             data: this.testData
-                            // data: [{
-                            //     "name": "北京",
-                            //     "value": 599
-                            // }, {
-                            //     "name": "上海",
-                            //     "value": 142
-                            // }, {
-                            //     "name": "黑龙江",
-                            //     "value": 44
-                            // }, {
-                            //     "name": "深圳",
-                            //     "value": 92
-                            // }, {
-                            //     "name": "湖北",
-                            //     "value": 810
-                            // }, {
-                            //     "name": "四川",
-                            //     "value": 453
-                            // }]
                         }
                     ]
                 });
@@ -316,6 +310,10 @@
                 this.country.cured = storage.getItem("curedCount");
                 this.country.current = storage.getItem("currentConfirmedCount");
                 this.curTime = storage.getItem("date");
+
+                this.area.value = storage.getItem("confirmedCount");
+                this.area.cured = storage.getItem("curedCount");
+                this.area.current = storage.getItem("currentConfirmedCount");
             },
             updateMap() {
                 let myChart = echarts.init(this.$refs.myEchart);
@@ -354,12 +352,105 @@
                     ); 
                 } 
             },
+            initGlobalCountryData() {
+                api.getCountrySerial('中国').then(
+                    res => {
+                        let chart = {
+                            xAxis: [],
+                            series: [
+                            {
+                                name: '确诊人数',
+                                data: []
+                            }, {
+                                name: '治愈人数',
+                                data: []
+                            }, {
+                                name: '死亡人数',
+                                data: []
+                            }
+                            ]
+                        }
+                        let newChart = {
+                            xAxis: [],
+                            series: [
+                                {
+                                    name: '新增确诊人数',
+                                    data: [],
+                                }, {
+                                    name: '新增疑似人数',
+                                    data: [],
+                                }
+                            ]
+                        }
+                        let remainChart = {
+                            xAxis: [],
+                            series: [
+                                {
+                                    name: '现存确诊人数',
+                                    data: [],
+                                }, {
+                                    name: '现存疑似人数',
+                                    data: [],
+                                }
+                            ]
+                        }
+                        let finishChart = {
+                            xAxis: [],
+                            series: [
+                                {
+                                    name: '治愈人数',
+                                    data: []
+                                }, {
+                                    name: '死亡人数',
+                                    data: [],
+                                }
+                            ]
+                        }
+                        let preSuspect = 0;
+                        let preConfirm = 0;
+                        for(let tmp of res) {
+                            chart.xAxis.push(tmp.date);
+                            chart.series[0].data.push(tmp.confirmed);
+                            chart.series[1].data.push(tmp.cured);
+                            chart.series[2].data.push(tmp.dead);
+
+                            // 往每日新增中增加数据
+                            newChart.xAxis.push(tmp.date);
+                            newChart.series[1].data.push(tmp.suspected - preSuspect);
+                            newChart.series[0].data.push(tmp.confirmed - preConfirm);
+                            preSuspect = tmp.suspected;
+                            preConfirm = tmp.confirmed;
+
+                            // 往现存数据中添加数据
+                            remainChart.xAxis.push(tmp.date);
+                            remainChart.series[0].data.push(tmp.confirmed-tmp.cured-tmp.dead);
+                            remainChart.series[1].data.push(tmp.suspected);
+
+                            // 往死亡/治愈数据中添加数据
+                            finishChart.xAxis.push(tmp.date);
+                            finishChart.series[0].data.push(tmp.cured);
+                            finishChart.series[1].data.push(tmp.dead);
+                        }
+                        this.countrySerialData = chart;
+                        this.newSerialData = newChart;
+                        this.remainData = remainChart;
+                        this.finishData = finishChart;
+
+
+                        // 更新一下首页的状态
+                        this.chartData = newChart;
+                    }
+                )
+            },
             
         },
         mounted() {
             this.getLocalData();
             this.initAreaData();
+            this.initGlobalCountryData();
             this.chinaConfigure();
+
+            
         }
     }
 </script>

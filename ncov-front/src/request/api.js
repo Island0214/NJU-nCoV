@@ -22,6 +22,18 @@ export const api = {
 
     getAllSarsData: function(country) {
         return get("getAllSarsData", {country:country})
+    },
+
+    getCountrySerial: function(country) {
+        return get("getCountrySerial", {country:country})
+    },
+
+    getProvinceSerial: function(province) {
+        return get("getProvinceSerial", {province:province})
+    },
+
+    getCitySerial: function(city) {
+        return get("getCitySerial", {city:city})
     }
 
 }

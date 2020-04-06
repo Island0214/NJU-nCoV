@@ -76,3 +76,5 @@ ncov-server/target/classes/static/sars.json
 ncov-server/target/test-classes/com/example/springboot/HelloControllerIT.class
 ncov-server/target/test-classes/com/example/springboot/HelloControllerTest.class
 *.class
+ncov-server/target/classes/Wuhan-2019-nCoV.json
+ncov-server/target/classes/static/Wuhan-2019-nCoV.json
