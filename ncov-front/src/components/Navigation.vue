@@ -11,6 +11,7 @@
                     <router-link to="/worldEpidemic"><button>世界疫情</button></router-link>
                     <router-link to="/news"><button>信息资讯</button></router-link>
                     <router-link to="/sars"><button>SARS</button></router-link>
+                    <router-link to="/model"><button>传染模型</button></router-link>
                     <router-link to="/about"><button>关于我们</button></router-link>
                 </el-col>
             </el-row>

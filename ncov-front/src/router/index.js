@@ -8,6 +8,7 @@ import Epidemic from '../views/Epidemic.vue'
 import RequestSarsData from "../components/RequestSarsData";
 import Sars from "../views/Sars.vue"
 import WorldEpidemic from "../views/WorldEpidemic.vue"
+import Model from "../views/Model.vue"
 
 Vue.use(VueRouter)
 
@@ -54,6 +55,11 @@ const routes = [
         path: '/worldEpidemic',
         name: 'WorldEpidemic',
         component: WorldEpidemic
+    },
+    {
+        path: '/model',
+        name: 'Model',
+        component: Model
     },
     // for test
     {

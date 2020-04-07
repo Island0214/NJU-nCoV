@@ -92,14 +92,14 @@ public class gitCloneUtil {
 
     public static void main(String[] args) {
         // String repositoryURL = "https://github.com/BlankerL/DXY-COVID-19-Data";
-        String repositoryURL = "https://gitee.com/idme/DXY-COVID-19-Data.git";
+        String repositoryURL = "https://github.com/canghailan/Wuhan-2019-nCoV";
         String localPath = "src/main/resources/static/COVID-Data";
 
-        String areaTimeSerialURL = "https://github.com/BlankerL/DXY-COVID-19-Data/raw/master/json/DXYArea-TimeSeries.json";
-        String overallTimeSerialURL = "https://github.com/BlankerL/DXY-COVID-19-Data/raw/master/json/DXYOverall-TimeSeries.json";
-        String tmp = "https://gitee.com/idme/DXY-COVID-19-Data/raw/master/json/DXYOverall-TimeSeries.json";
-        deleteDir("src/main/resources/static/COVID-Data");
-        //JGitClone(repositoryURL, localPath);
-        downloadZip(tmp, new File(localPath+"/DXYOverall-TimeSeries.json"));
+        //String areaTimeSerialURL = "https://github.com/BlankerL/DXY-COVID-19-Data/raw/master/json/DXYArea-TimeSeries.json";
+        //String overallTimeSerialURL = "https://github.com/BlankerL/DXY-COVID-19-Data/raw/master/json/DXYOverall-TimeSeries.json";
+        //String tmp = "https://gitee.com/idme/DXY-COVID-19-Data/raw/master/json/DXYOverall-TimeSeries.json";
+        //deleteDir("src/main/resources/static/COVID-Data");
+        JGitClone(repositoryURL, localPath);
+        //downloadZip(tmp, new File(localPath+"/DXYOverall-TimeSeries.json"));
     }
 }
