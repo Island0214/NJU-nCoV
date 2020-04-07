@@ -499,6 +499,7 @@
                         }
                     ); 
                 } 
+                
             },
             initGlobalCountryData() {
                 api.getCountrySerial('中国').then(

@@ -34,6 +34,15 @@ export const api = {
 
     getCitySerial: function(city) {
         return get("getCitySerial", {city:city})
+    },
+
+    getCountryLatest: function(country) {
+        return get("getCountryLatest", {country:country})
+    },
+
+    getAllCountryLatest: function(){
+        return get("getAllCountryLatest", {})
     }
+
 
 }

@@ -39,6 +39,31 @@ public class OverallInfoReaderModel implements ApplicationRunner {
         return countryDailyData.get(city);
     }
 
+    public static AreaDailyData getCountryLatest(String country) {
+        List<AreaDailyData> list = countryDailyData.get(country);
+        if(list==null || list.size()==0) return null;
+        return list.get(list.size()-1);
+    }
+
+    public static AreaDailyData getProvinceLatest(String province) {
+        List<AreaDailyData> list = provinceDailyData.get(province);
+        return list.get(list.size()-1);
+    }
+
+    public static AreaDailyData getCityLatest(String city) {
+        List<AreaDailyData> list = cityDailyData.get(city);
+        return list.get(list.size()-1);
+    }
+
+    public static List<AreaDailyData> getAllCountryLatest() {
+        List<AreaDailyData> res = new ArrayList<>();
+        for(Map.Entry<String, List<AreaDailyData>> entry: countryDailyData.entrySet()) {
+            List<AreaDailyData> list = entry.getValue();
+            res.add(list.get(list.size()-1));
+        }
+        return res;
+    }
+
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
