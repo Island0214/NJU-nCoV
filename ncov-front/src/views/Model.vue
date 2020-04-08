@@ -8,7 +8,7 @@
                 <div class="el-card box-card is-always-shadow">
                     <div class="el-card__header">
                         <div class="clearfix">
-                            <span><h3>SEIR模型参数</h3></span>
+                            <h1>SEIR模型参数</h1>
                         </div>
                     </div>
                     <div class="el-card__body">
@@ -58,12 +58,11 @@
 
             <el-col :span="1"><br></el-col>
 
-            <el-col :span="15">
+            <el-col :span="16" style="text-align: center">
 
                 <h2>当前R0系数值为：{{R0}}</h2>
                 <br>
 
-                <!-- <LineChart :data="chartData"></LineChart> -->
                 <div id="container" class="chart-wrapper"> </div>
 
                 <el-divider></el-divider>
@@ -71,7 +70,7 @@
                 <div class="text-wrapper">
                     <p>在没有任何干预的情况下，模拟单个人群中COVID-19流行的自然过程，采用SEIR模型。</p>
                     <p><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.816ex" height="2.429ex" viewBox="0 -783.2 1212.6 1045.7" role="img" focusable="false" style="vertical-align: -0.609ex;"><defs><path stroke-width="0" id="E2-MJMATHI-52" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"></path><path stroke-width="0" id="E2-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E2-MJMATHI-52" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E2-MJMAIN-30" x="1073" y="-213"></use></g></svg></span><script type="math/tex">R_0</script>是以下各项的总和</p>
-                    <ol>
+                    <ol class="ol-wrapper">
                     <li>个人在<span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.075ex" height="2.308ex" viewBox="0 -783.2 893.6 993.6" role="img" focusable="false" style="vertical-align: -0.489ex;"><defs><path stroke-width="0" id="E3-MJMATHI-49" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path><path stroke-width="0" id="E3-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E3-MJMATHI-49" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E3-MJMAIN-31" x="622" y="-213"></use></g></svg></span><script type="math/tex">I_1</script>阶段产生的平均二次感染数</li>
                     <li>受感染的个人发展到<span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.075ex" height="2.308ex" viewBox="0 -783.2 893.6 993.6" role="img" focusable="false" style="vertical-align: -0.489ex;"><defs><path stroke-width="0" id="E5-MJMATHI-49" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path><path stroke-width="0" id="E5-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E5-MJMATHI-49" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E5-MJMAIN-32" x="622" y="-213"></use></g></svg></span><script type="math/tex">I_2</script>的概率乘以该个人在<span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.075ex" height="2.308ex" viewBox="0 -783.2 893.6 993.6" role="img" focusable="false" style="vertical-align: -0.489ex;"><defs><path stroke-width="0" id="E5-MJMATHI-49" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path><path stroke-width="0" id="E5-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E5-MJMATHI-49" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E5-MJMAIN-32" x="622" y="-213"></use></g></svg></span><script type="math/tex">I_2</script>阶段产生的二次感染的平均数量</li>
                     <li>被感染的个体发展到<span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.075ex" height="2.429ex" viewBox="0 -783.2 893.6 1045.7" role="img" focusable="false" style="vertical-align: -0.609ex;"><defs><path stroke-width="0" id="E7-MJMATHI-49" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path><path stroke-width="0" id="E7-MJMAIN-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E7-MJMATHI-49" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E7-MJMAIN-33" x="622" y="-213"></use></g></svg></span><script type="math/tex">I_3</script>的概率乘以个体在阶段<span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.075ex" height="2.429ex" viewBox="0 -783.2 893.6 1045.7" role="img" focusable="false" style="vertical-align: -0.609ex;"><defs><path stroke-width="0" id="E7-MJMATHI-49" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path><path stroke-width="0" id="E7-MJMAIN-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E7-MJMATHI-49" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E7-MJMAIN-33" x="622" y="-213"></use></g></svg></span><script type="math/tex">I_3</script>中产生的二次感染的平均数量</li>
@@ -85,7 +84,7 @@
                     \end{equation}</script></p>
                     <p>&nbsp;</p>
                     <br>
-                    <p>时间所限，这里实现的模型较为简单，更加优秀的模型可视化可以参考项目<a href="https://github.com/alsnhll/SEIR_COVID19">SEIR_COVID19</a></p>
+                    <p>时间所限，这里实现的模型较为简单，更加优秀的模型可视化可以参考项目<a target="_blank" href="https://github.com/alsnhll/SEIR_COVID19">SEIR_COVID19</a></p>
                 </div>
 
             </el-col>
@@ -133,17 +132,6 @@ export default {
             mark6: {
                 0: '0%',
                 1: '100%'
-            },
-
-            chartData: {
-                xAxis: ['2020-02-13', '2020-02-14', '2020-02-15', '2020-02-16', '2020-02-17', '2020-02-18', '2020-02-19'],
-                series: [{
-                    name: '新增确证人数',
-                    data: [820, 932, 901, 934, 1290, 1330, 1320]
-                }, {
-                    name: '新增疑似人数',
-                    data: [100, 1213, 122, 342, 1236, 41, 123]
-                }]
             },
             Sinit: 1000,    // 初始无免疫者, (总数)
             Einit: 0,       // 潜伏期人群
@@ -277,19 +265,8 @@ export default {
                     max: this.Sinit,
                     minorTick: {
                         show: true
-                    },
-                    splitLine: {
-                        lineStyle: {
-                            color: '#999'
-                        }
-                    },
-                    minorSplitLine: {
-                        show: true,
-                        lineStyle: {
-                            color: '#ddd'
-                        }
                     }
-                },
+                }
             })
         },
 
@@ -358,13 +335,19 @@ export default {
             var option = null;
             option = {
                 animation: false,
-                grid: {
-                    top: 40,
-                    left: 50,
-                    right: 40,
-                    bottom: 50
-                },
+                // grid: {
+                //     top: 40,
+                //     left: 50,
+                //     right: 40,
+                //     bottom: 50
+                // },
                 xAxis: {
+                    axisLine: {
+                        lineStyle: {
+                            color: '#FFFFFF',
+                            width: 2
+                        }
+                    },
                     name: 'x',
                     min: 0,
                     max: 100,
@@ -372,18 +355,25 @@ export default {
                         show: true
                     },
                     splitLine: {
+                        show: true,
                         lineStyle: {
-                            color: '#999'
+                            color: '#5f7685'
                         }
                     },
                     minorSplitLine: {
                         show: true,
                         lineStyle: {
-                            color: '#ddd'
+                            color: '#3c4c57'
                         }
                     }
                 },
                 yAxis: {
+                    axisLine: {
+                        lineStyle: {
+                            color: '#FFFFFF',
+                            width: 2
+                        }
+                    },
                     name: 'y',
                     min: 0,
                     max: this.Sinit,
@@ -391,14 +381,15 @@ export default {
                         show: true
                     },
                     splitLine: {
+                        show: true,
                         lineStyle: {
-                            color: '#999'
+                            color: '#5f7685'
                         }
                     },
                     minorSplitLine: {
                         show: true,
                         lineStyle: {
-                            color: '#ddd'
+                            color: '#3c4c57'
                         }
                     }
                 },
@@ -420,22 +411,23 @@ export default {
                 zoomOnMouseWheel: false,
                 moveOnMouseMove: false,
                 legend: {
+                    textStyle: {
+                        color: '#FFFFFF',
+                        fontWeight: 'bolder'
+                    },
+                    icon: 'pin',
                     data: ['S-易感人群', 'E-潜伏人群', 'I-发病人群', 'R-治愈人群']
                 },
-                // series: [
-                //     {
-                //         type: 'line',
-                //         showSymbol: false,
-                //         clip: true,
-                //         data: this.generateData()
-                //     },
-                //     {
-                //         type: 'line',
-                //         showSymbol: false,
-                //         clip: true,
-                //         data: this.generateData1()
-                //     }
-                // ]
+                grid: {
+                    show: true,
+                    backgroundColor: '#303843'
+                },
+                color: ['#646299', '#afcaed', '#a3d28a', '#ed97be'],
+                series: [],
+                tooltip: {
+                    show: true,
+                    trigger: 'axis'
+                }
             };
             if (option && typeof option == "object"){
                 myChart.setOption(option, true);
@@ -485,13 +477,17 @@ export default {
         padding: 20px;
     }
     .el-card__header {
-        padding: 18px 20px;
-        border-bottom: 1px solid #EBEEF5;
         box-sizing: border-box;
     }
-    h3 {
-        color: #000;
+
+    .ol-wrapper {
+        color: #cfcfcf;
     }
+
+    h3 {
+        color: #FFFFFF;
+    }
+
     .map-wrapper {
         height: 100vh;
         width: 100%;
@@ -499,11 +495,19 @@ export default {
     .chart-wrapper {
         width: 100%;
         height: 50vh;
-        background: #EBEEF5;
     }
+
     .text-wrapper {
         text-align: left;
         margin-left: 10px;
         margin-right: 10px;
+    }
+
+    p {
+        text-indent: 32px;
+    }
+
+    p span {
+        text-indent: 0;
     }
 </style>

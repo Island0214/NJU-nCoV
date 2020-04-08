@@ -442,8 +442,11 @@
                             normal: {
                                 show: false, // 是否显示对应地名
                                 textStyle: {
-                                    color: 'rgba(0,0,0,0.4)'
+                                    color: '#aeaeae'
                                 }
+                            },
+                            emphasis: {
+                                color: '#192028'
                             }
                         },
                         itemStyle: {
@@ -534,11 +537,11 @@
     }
 
     .map-wrapper {
-        height: 80vh;
-        width: 90%;
+        height: 75vh;
+        width: 95%;
         margin-top: 10vh;
         margin-left: 10vh;
-        margin-right: 0vh;
+        margin-right: 0;
     }
 
     .content-wrapper {

@@ -92,5 +92,6 @@
     .chart-wrapper {
         width: 100%;
         height: 50vh;
+        color: #192028;
     }
 </style>

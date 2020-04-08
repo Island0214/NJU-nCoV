@@ -320,8 +320,11 @@
                             normal: {
                                 show: true, // 是否显示对应地名
                                 textStyle: {
-                                    color: 'rgba(0,0,0,0.4)'
+                                    color: '#aeaeae'
                                 }
+                            },
+                            emphasis: {
+                                color: '#192028'
                             }
                         },
                         itemStyle: {
