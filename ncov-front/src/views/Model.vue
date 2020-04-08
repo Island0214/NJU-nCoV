@@ -270,7 +270,26 @@ export default {
                         clip: true,
                         data: lst_r
                     }
-                ]
+                ],
+                yAxis: {
+                    name: 'y',
+                    min: 0,
+                    max: this.Sinit,
+                    minorTick: {
+                        show: true
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#999'
+                        }
+                    },
+                    minorSplitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#ddd'
+                        }
+                    }
+                },
             })
         },
 
@@ -367,7 +386,7 @@ export default {
                 yAxis: {
                     name: 'y',
                     min: 0,
-                    max: 10000,
+                    max: this.Sinit,
                     minorTick: {
                         show: true
                     },

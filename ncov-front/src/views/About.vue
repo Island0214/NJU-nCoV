@@ -32,8 +32,11 @@
     </div>
     <div class="person">
       <div class="info info-right">
-          <div class="self-top"></div>
-          <div class="self-bottom"></div>
+          <div class="self-top">
+            <p>南京大学软件学院</p>
+            <p>https://github.com/IDmeforever/</p>
+          </div>
+          <div class="self-bottom">idmeforever at Gmail.com</div>
       </div>
       <div class="left">
         <div class="image-right"><img src="../assets/张子昂.jpg" width="80" height="80"></div>
