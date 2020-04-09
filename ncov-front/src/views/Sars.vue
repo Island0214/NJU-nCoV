@@ -21,8 +21,8 @@
 
         <div>
             <h1>什么是SARS？</h1>
-            <p class="textcss" style="font-size: 13px; font-weight: 100; line-height: 16px;">
-                引自wiki：<a href="https://zh.wikipedia.org/wiki/嚴重急性呼吸系統綜合症">严重急性呼吸道综合征</a>
+            <p class="textcss" style="font-size: 14px; font-weight: 500; line-height: 16px;">
+                引自wiki：<a target="_blank" href="https://zh.wikipedia.org/wiki/嚴重急性呼吸系統綜合症">严重急性呼吸道综合征</a>
             </p>
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/SARS_virion.gif" alt="SARS病毒颗粒的电子显微镜摄影图" width="200px"/>
             <p class="textcss">
@@ -49,7 +49,7 @@
             </p>
             <h2>SARS症状</h2>
             <p class="textcss">“疑似病例”是定义为在2003年2月1日之后有以下病状历史的人：</p>
-            <p class="textcss">
+            <div class="ul-wrapper">
                 <ul><li>发高烧高于38℃（100.4℉）以及一个或是更多个下列的呼吸症状：
                 <ul><li>头晕症状</li>
                 <li>呼吸急促</li>
@@ -60,9 +60,9 @@
                 <li>除了发高烧和一个呼吸症状之外，还要一个或是更多个以下的情况：
                 <ul><li>与疑似病人亲密接触（例如住在一起）</li>
                 <li>最近曾经到访严重急性呼吸道综合征感染地区旅游</li></ul></li></ul>
-            </p>
+            </div>
             <p class="textcss">除了发烧和呼吸症状，其它跟严重急性呼吸道综合征有关的症状包括：</p>
-            <p class="textcss">
+            <div class="ul-wrapper">
                 <ul><li>头痛</li>
                 <li>肌肉僵硬</li>
                 <li>失去食欲</li>
@@ -73,7 +73,7 @@
                 <li>白血球和血小板数目通常会变低</li>
                 <li>发冷</li>
                 <li>发颤</li></ul>
-            </p>
+            </div>
         </div>
 
         <el-divider></el-divider>
@@ -225,6 +225,14 @@
     .textcss{
         text-align: left !important;
         margin: 1em 60px 1em 60px;
+        font-size: 16px;
+        text-indent: 32px;
+    }
+
+    .ul-wrapper {
+        text-align: left;
+        margin: 1em 60px 1em 60px;
+        color: #cfcfcf;
     }
 
     h2 {
