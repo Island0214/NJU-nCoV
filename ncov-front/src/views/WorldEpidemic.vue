@@ -7,7 +7,7 @@
                     <el-col :span="12">
                         <div class="data-wrapper">
                             <h1>世界实时疫情动态</h1>
-                            <p>数据截止2020-04-09</p>
+                            <p>数据截止2020-04-25</p>
                             <h1>——</h1>
                             <h2>{{country.name}}</h2>
                             <h4>累计确诊人数</h4>
